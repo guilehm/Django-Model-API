@@ -8,7 +8,6 @@ def index(request):
 
 def products(request):
     products = requests.get('http://localhost:8000/api/products').json()
-    print(products)
     context = {
         'products' : products,
     }
