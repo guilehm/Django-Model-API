@@ -1,9 +1,5 @@
 from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from core.models import Product
-from core.serializers import ProductSerializer
+import requests
 
 # Create your views here.
 def index(request):
@@ -11,16 +7,9 @@ def index(request):
 
 
 def products(request):
-    products = Product.objects.all()
+    products = requests.get('http://localhost:8000/api/products').json()
+    print(products)
     context = {
         'products' : products,
     }
     return render(request,'client/products.html', context)
-
-
-def api(request):
-    products = Product.objects.all()
-    context = {
-        'products' : products,
-    }
-    return render(request,'client/API.html', context)

@@ -14,9 +14,15 @@ def api(request):
     return render(request,'core/API.html', context)
 
 
+class ProductList(APIView):
+    def get(self, request):
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+
+
 class ProductDetail(APIView):
     def get(self, request, product_slug):
         product = Product.objects.get(slug=product_slug)
-        print('produto aqui *****', product)
         serializer = ProductSerializer(product)
         return Response(serializer.data)

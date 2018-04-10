@@ -8,7 +8,6 @@ app_name = 'client'
 urlpatterns = [
     path('', views.index, name='index'),
     path('products/', views.products, name='products'),
-    path('api/', views.api, name='api'),
 ]
 
 if settings.DEBUG:
