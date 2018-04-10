@@ -6,18 +6,6 @@ from rest_framework import status
 from .serializers import ProductSerializer
 
 # Create your views here.
-def index(request):
-    return render(request,'core/index.html')
-
-
-def products(request):
-    products = Product.objects.all()
-    context = {
-        'products' : products,
-    }
-    return render(request,'core/products.html', context)
-
-
 def api(request):
     products = Product.objects.all()
     context = {

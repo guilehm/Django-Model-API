@@ -3,11 +3,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
-app_name = 'core'
+app_name = 'client'
 
 urlpatterns = [
-    path('', views.api, name='api'),
-    path('products/<str:product_slug>/', views.ProductDetail.as_view(), name='product_api'),
+    path('', views.index, name='index'),
+    path('products/', views.products, name='products'),
+    path('api/', views.api, name='api'),
 ]
 
 if settings.DEBUG:

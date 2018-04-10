@@ -1,4 +1,4 @@
-{% extends 'core/base.html' %}
+{% extends 'client/base.html' %}
 
 
 {% block content %}
@@ -18,7 +18,7 @@
               <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
             </div>
             <div class="card-body">
-              <img class="mb-2 img-fluid" src="{{ product.img.url }}" alt="{{ product.name }}" style="height:auto; max-width:100%"><br>
+              <img class="mb-2 img-fluid" src="{{ product.img.url }}" alt="{{ product.name }}" style="height:auto; max-width:100%;"><br>
               <span class="card-title pricing-card-title h5">Alugue por:</span>
               <ul class="list-unstyled mt-3 mb-4">
                 <li><h3 class="card-title pricing-card-title"> <small class="text-muted">5 x </small>R$ {% widthratio product.price 500 107|floatformat %}</h3></li>
