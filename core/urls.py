@@ -7,8 +7,9 @@ app_name = 'core'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('produtos/', views.products, name='produtos'),
-    path('api/', views.index, name='api'),
+    path('products/', views.products, name='products'),
+    path('api/', views.api, name='api'),
+    path('api/products/<str:product_slug>/', views.ProductDetail.as_view(), name='product_api'),
 ]
 
 if settings.DEBUG:

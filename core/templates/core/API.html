@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">API</h1>
+      <p class="lead">Visão da API por Produtos.</p>
+    </div>
+
+    <div class="container">
+      <div class="">
+        <div class="row">
+          {% for product in products %}
+        <div class="card-deck mb-3 text-center col-md-6 col-lg-4 col-xl-3">
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+            </div>
+            <div class="card-body">
+              <img class="mb-2 img-fluid" src="{{ product.img.url }}" alt="{{ product.name }}" style="height:130px; max-width:100%"><br>
+              <a href="{% url 'core:product_api' product.slug %}" class="btn btn-sm btn-block btn-success" target="_blank">API</a>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock %}
