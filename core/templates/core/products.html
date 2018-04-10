@@ -21,9 +21,18 @@
               <img class="mb-2 img-fluid" src="{{ product.img.url }}" alt="{{ product.name }}" style="height:auto; max-width:100%"><br>
               <span class="card-title pricing-card-title h5">Alugue por:</span>
               <ul class="list-unstyled mt-3 mb-4">
-                <li><h1 class="card-title pricing-card-title"> <small class="text-muted">5 x </small>R$ 121,00</h1></li>
+                <li><h3 class="card-title pricing-card-title"> <small class="text-muted">5 x </small>R$ {% widthratio product.price 500 107|floatformat %}</h3></li>
                 <li>ou R$ {{ product.price }} à vista</li>
-                <li class="text-muted">tamanhos: 36 40 44 46</li>
+                <li class="text-muted">tamanhos: {{ product.size }}</li>
+                <li class="text-muted">tamanhos:
+                    {% for size in product.size %}
+                    {% if forloop.last %}
+                        {{ size }}.
+                    {% else %}
+                        {{ size }},
+                    {% endif %}
+                    {% endfor %}
+                </li>
               </ul>
               <button type="button" class="btn btn-lg btn-block btn-success">Alugue agora</button>
             </div>

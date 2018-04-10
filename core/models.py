@@ -1,4 +1,5 @@
 from django.db import models
+from multiselectfield import MultiSelectField
 
 
 types = (
@@ -7,6 +8,15 @@ types = (
     ('3', 'Camisa'),
 )
 
+sizes = (
+    ('32', '32'),
+    ('34', '34'),
+    ('36', '36'),
+    ('38', '38'),
+    ('40', '40'),
+    ('42', '42'),
+    ('44', '44'),
+)
 
 # Create your models here.
 class Product(models.Model):
@@ -15,6 +25,7 @@ class Product(models.Model):
     quantity    = models.PositiveSmallIntegerField('quantidade')
     img         = models.ImageField(upload_to='core/products')
     type        = models.CharField(max_length=7, choices=types)
+    size        = MultiSelectField(choices=sizes)
     slug        = models.SlugField('slug', blank=True)
 
     def __str__(self):
