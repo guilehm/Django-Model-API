@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'client',
     'rest_framework',
+    'storages',
 ]
 
 MIDDLEWARE = [
