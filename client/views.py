@@ -17,7 +17,7 @@ def products(request):
 
 
 def product(request, product_slug):
-    product = requests.get('http://localhost:8000/api/products/' + product_slug).json()
+    # product = requests.get('http://localhost:8000/api/products/' + product_slug).json()
     product = requests.get('https://gui-api.herokuapp.com/api/products/' + product_slug).json()
     print(product)
     context = {
