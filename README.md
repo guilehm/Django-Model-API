@@ -15,6 +15,10 @@
 * At this link: https://gui-api.herokuapp.com/products/ you can see the products list
 * At this link: https://gui-api.herokuapp.com/products/camisa-social/ you can see the JSON data of specific Product through its slug
 
+* At this link: https://gui-api.herokuapp.com/api/ you can see the the main page to check JSON files
+* At this link: https://gui-api.herokuapp.com/api/products/ you can see the Django Rest Framework interface for Products
+* At this link: https://gui-api.herokuapp.com/api/products/camisa-social/  you can see the Django Rest Framework interface for specific Product throug its slug
+
 ## Built With:
 
 * Python 3.6.4
