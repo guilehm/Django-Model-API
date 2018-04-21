@@ -23,7 +23,7 @@
         <form>
           <div class="form-row">
             <div class="col-6">
-              <select class="form-control" id="Products" onchange="alerta(this)">
+              <select class="form-control" id="Products" onchange="consulta(this.value)">
                 {% for product in products %}
                 <option>{{ product.name }}</option>
                 {% endfor %}
@@ -44,16 +44,23 @@
 {% block scripts %}
 
 <script>
-    $.ajax({
-        type: 'GET',
-        url: "http://localhost:8000/api/products/",
-        dataType: "json",
-        async: true,
-        success: function(data) {
-            console.log((data))
-        }
-    })
-    
+    function consulta(produto){
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost:8000/api/products/",
+            dataType: "json",
+            async: true,
+            success: function(data) {
+                for (i= 0; i < data.length; i++) {
+                    console.log(data[i].name);
+                    if (data[i].name == produto) {
+                        document.getElementById('quantity').value = data[i].quantity
+                        document.getElementById('price').value = ('R$ ' + data[i].price)
+                    }
+                }
+            }
+        })
+    }
     function alerta(option) {
         console.log(option.value)
     } 
