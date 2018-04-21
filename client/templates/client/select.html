@@ -22,20 +22,41 @@
     <div class="container">
         <form>
           <div class="form-row">
-            <div class="col-7">
-              <select class="form-control" id="Products">
-          {% for product in products %}
-          <option>{{ product.name }}</option>
-          {% endfor %}
-        </select>
+            <div class="col-6">
+              <select class="form-control" id="Products" onchange="alerta(this)">
+                {% for product in products %}
+                <option>{{ product.name }}</option>
+                {% endfor %}
+              </select>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Quantidade">
+              <input type="text" class="form-control" placeholder="Quantidade Disponível" id="quantity" readonly>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Valor">
+              <input type="text" class="form-control" placeholder="Valor" id="price" readonly>
             </div>
           </div>
         </form>
     </div>
 {% endblock %}
+
+
+{% block scripts %}
+
+<script>
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8000/api/products/",
+        dataType: "json",
+        async: true,
+        success: function(data) {
+            console.log((data))
+        }
+    })
+    
+    function alerta(option) {
+        console.log(option.value)
+    } 
+</script>
+
+{% endblock scripts %}
