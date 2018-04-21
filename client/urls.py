@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('products/', views.products, name='products'),
     path('products/<str:product_slug>/', views.product, name='product'),
+    path('select/', views.select, name='select'),
 ]
 
 if settings.DEBUG:
