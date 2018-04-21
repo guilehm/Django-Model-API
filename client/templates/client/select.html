@@ -8,7 +8,34 @@
       <p class="lead">Página criada para testes</p>
     </div>
 
-    <div class="container text-center mb-5">
-      <a href="{% url 'client:products' %}" class="btn btn-lg btn-success">Alugue agora!</a>
+    <!--<div class="container text-center mb-5">-->
+      <!--<div class="form-group">-->
+        <!--<label for="Products">Select the product</label>-->
+        <!--<select class="form-control" id="Products">-->
+          <!--{% for product in products %}-->
+          <!--<option>{{ product.name }}</option>-->
+          <!--{% endfor %}-->
+        <!--</select>-->
+      <!--</div>-->
+        <!--<input class="form-control" type="text" placeholder="Readonly input here…" readonly>-->
+    <!--</div>-->
+    <div class="container">
+        <form>
+          <div class="form-row">
+            <div class="col-7">
+              <select class="form-control" id="Products">
+          {% for product in products %}
+          <option>{{ product.name }}</option>
+          {% endfor %}
+        </select>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Quantidade">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Valor">
+            </div>
+          </div>
+        </form>
     </div>
 {% endblock %}

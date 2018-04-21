@@ -26,4 +26,9 @@ def product(request, product_slug):
     return render(request,'client/product.html', context)
 
 def select(request):
-    return render(request, 'client/select.html')
+    products = requests.get('http://localhost:8000/api/products').json()
+    # products = requests.get('https://gui-api.herokuapp.com/api/products').json()
+    context = {
+        'products' : products,
+    }
+    return render(request, 'client/select.html', context)
