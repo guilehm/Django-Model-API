@@ -13,14 +13,14 @@
           <div class="form-row">
             <div class="col-12">
               <label for="Products">Produtos:</label>
-              <select class="form-control mb-4" id="Products" onchange="consulta(this.value)">
+              <select class="form-control" id="Products" onchange="consulta(this.value)">
                 <option> -------- </option>
                 {% for product in products %}
                 <option>{{ product.name }}</option>
                 {% endfor %}
               </select>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mt-4">
               <label for="quantity">Quantidade em estoque:</label>
               <input type="text" class="form-control mb-4" placeholder="Quantidade Disponível" id="quantity" readonly>
             </div>
@@ -44,7 +44,8 @@
     function consulta(produto){
         $.ajax({
             type: 'GET',
-            url: "https://gui-api.herokuapp.com/api/products",
+            url: "http://localhost:8000/api/products/",
+            <!--url: "https://gui-api.herokuapp.com/api/products",-->
             dataType: "json",
             async: true,
             success: function(data) {
@@ -61,9 +62,13 @@
             }
         })
     }
-    function alerta(option) {
-        console.log(option.value)
-    } 
+</script>
+<script>
+$(document).ready(function() {
+    $('#Products').select2({
+        theme: 'bootstrap4'
+    });
+});
 </script>
 
 {% endblock scripts %}
