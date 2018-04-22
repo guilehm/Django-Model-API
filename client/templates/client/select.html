@@ -44,8 +44,8 @@
     function consulta(produto){
         $.ajax({
             type: 'GET',
-            url: "http://localhost:8000/api/products/",
-            <!--url: "https://gui-api.herokuapp.com/api/products",-->
+            <!--url: "http://localhost:8000/api/products/",-->
+            url: "https://gui-api.herokuapp.com/api/products",
             dataType: "json",
             async: true,
             success: function(data) {
