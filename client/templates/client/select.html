@@ -8,32 +8,25 @@
       <p class="lead">Página criada para testes</p>
     </div>
 
-    <!--<div class="container text-center mb-5">-->
-      <!--<div class="form-group">-->
-        <!--<label for="Products">Select the product</label>-->
-        <!--<select class="form-control" id="Products">-->
-          <!--{% for product in products %}-->
-          <!--<option>{{ product.name }}</option>-->
-          <!--{% endfor %}-->
-        <!--</select>-->
-      <!--</div>-->
-        <!--<input class="form-control" type="text" placeholder="Readonly input here…" readonly>-->
-    <!--</div>-->
     <div class="container">
         <form>
           <div class="form-row">
-            <div class="col-6">
-              <select class="form-control" id="Products" onchange="consulta(this.value)">
+            <div class="col-12">
+              <label for="Products">Produtos:</label>
+              <select class="form-control mb-4" id="Products" onchange="consulta(this.value)">
+                <option> -------- </option>
                 {% for product in products %}
                 <option>{{ product.name }}</option>
                 {% endfor %}
               </select>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Quantidade Disponível" id="quantity" readonly>
+            <div class="col-12 col-md-6">
+              <label for="quantity">Quantidade em estoque:</label>
+              <input type="text" class="form-control mb-4" placeholder="Quantidade Disponível" id="quantity" readonly>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Valor" id="price" readonly>
+            <div class="col-12 col-md-6">
+              <label for="price">Preço:</label>
+              <input type="text" class="form-control mb-4" placeholder="Valor" id="price" readonly>
             </div>
           </div>
         </form>
@@ -52,10 +45,13 @@
             async: true,
             success: function(data) {
                 for (i= 0; i < data.length; i++) {
-                    console.log(data[i].name);
+                    console.log(produto);
                     if (data[i].name == produto) {
                         document.getElementById('quantity').value = data[i].quantity
                         document.getElementById('price').value = ('R$ ' + data[i].price)
+                    } else if (produto == '--------') {
+                        document.getElementById('quantity').value = 'N/A'
+                        document.getElementById('price').value = 'N/A'
                     }
                 }
             }
