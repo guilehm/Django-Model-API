@@ -5,7 +5,7 @@
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Select</h1>
-      <p class="lead">Página criada para testes</p>
+      <p class="lead">Página criada para testes de Ajax</p>
     </div>
 
     <div class="container">
@@ -24,9 +24,13 @@
               <label for="quantity">Quantidade em estoque:</label>
               <input type="text" class="form-control mb-4" placeholder="Quantidade Disponível" id="quantity" readonly>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-3">
               <label for="price">Preço:</label>
               <input type="text" class="form-control mb-4" placeholder="Valor" id="price" readonly>
+            </div>
+            <div class="col-12 col-md-3">
+              <label for="price">Valor Estoque:</label>
+              <input type="text" class="form-control mb-4" placeholder="Total Estoque" id="total-price" readonly>
             </div>
           </div>
         </form>
@@ -40,15 +44,15 @@
     function consulta(produto){
         $.ajax({
             type: 'GET',
-            url: "http://localhost:8000/api/products/",
+            url: "https://gui-api.herokuapp.com/api/products",
             dataType: "json",
             async: true,
             success: function(data) {
                 for (i= 0; i < data.length; i++) {
-                    console.log(produto);
                     if (data[i].name == produto) {
-                        document.getElementById('quantity').value = data[i].quantity
+                        document.getElementById('quantity').value = data[i].quantity + ' peças'
                         document.getElementById('price').value = ('R$ ' + data[i].price)
+                        document.getElementById('total-price').value = 'R$ ' + data[i].quantity * data[i].price
                     } else if (produto == '--------') {
                         document.getElementById('quantity').value = 'N/A'
                         document.getElementById('price').value = 'N/A'
