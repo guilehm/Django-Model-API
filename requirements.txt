@@ -7,7 +7,7 @@ dj-static==0.0.6
 Django==2.0.12
 django-multiselectfield==0.1.8
 django-storages==1.6.6
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 docutils==0.14
 gunicorn==19.7.1
 idna==2.6
